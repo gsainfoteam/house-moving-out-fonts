@@ -2,12 +2,13 @@ import subsetFont from "subset-font";
 
 const batang = await Bun.file("./HCRBatang.ttf").arrayBuffer();
 const batangBold = await Bun.file("./HCRBatang-Bold.ttf").arrayBuffer();
-const chars = await Bun.file("./house-glyphs.txt").text();
+const chars = await Bun.file("./glyphs.txt").text();
+const boldChars = await Bun.file("./bold-glyphs.txt").text();
 
 const batangSubset = await subsetFont(Buffer.from(batang), chars, {
   targetFormat: "truetype",
 });
-const batangBoldSubset = await subsetFont(Buffer.from(batangBold), chars, {
+const batangBoldSubset = await subsetFont(Buffer.from(batangBold), boldChars, {
   targetFormat: "truetype",
 });
 
